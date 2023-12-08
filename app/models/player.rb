@@ -9,11 +9,11 @@
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#
+#  has_many(:career, through: :seasons, source: :team)
+
 class Player < ApplicationRecord
   validates(:name, presence: true)
-  has_many(:seasons)
-
-  has_many(:career, through: :seasons, source: :team)
+  
+  has_many(:career, class_name: "Team")
 
 end
