@@ -1,0 +1,162 @@
+<h1>
+  Coach #<%= @the_coach.id %> details
+</h1>
+
+<div>
+  <a href="/coaches">
+    Go back
+  </a>
+</div>
+
+<div>
+  <a href="/delete_coach/<%= @the_coach.id %>">
+    Delete coach
+  </a>
+</div>
+
+<hr>
+
+<form action="/modify_coach/<%= @the_coach.id %>" method="post">
+  <div>
+    <label for="name_box">
+      Name
+    </label>
+
+    <input type="text" id="name_box" name="query_name" value="<%= @the_coach.name %>">
+  </div>
+
+  <div>
+    <label for="dob_box">
+      Dob
+    </label>
+
+    <input type="date" id="dob_box" name="query_dob" value="<%= @the_coach.dob %>">
+  </div>
+
+  <div>
+    <label for="bio_box">
+      Bio
+    </label>
+
+    <textarea id="bio_box" name="query_bio" rows="3"><%= @the_coach.bio %></textarea>
+  </div>
+
+  <div>
+    <label for="image_box">
+      Image
+    </label>
+
+    <input type="text" id="image_box" name="query_image" value="<%= @the_coach.image %>">
+  </div>
+
+  <button>
+    Update coach
+  </button>
+</form>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @the_coach.name %>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%= @the_coach.dob %>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%= @the_coach.bio %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="<%= @the_coach.image %>" style="width:250px;">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@the_coach.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@the_coach.updated_at) %> ago
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Career</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Coach
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @the_coach.career.each do |a_team| %>
+    <tr>
+      <td>
+        <%= a_team.id %>
+      </td>
+
+      <td>
+        <img src="<%= a_team.image %>" style="width:250px;">
+      </td>
+
+      <td>
+        <%= a_team.title %>
+      </td>
+
+      <td>
+        <%= a_team.year %>
+      </td>
+
+      <td>
+        <%= a_team.coach.name %>
+      </td>
+
+      <td>
+        <a href="/teams/<%= a_team.id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
+  <% end %>
+</table>

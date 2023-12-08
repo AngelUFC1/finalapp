@@ -1,0 +1,100 @@
+<div>
+  <a href="/">
+    Go home
+  </a>
+</div>
+
+<h1>
+  List of legends </strong>
+</h1>
+
+<hr>
+
+<form action="/insert_player" method="post">
+  <div>
+    <label for="name_box">
+      Name
+    </label>
+
+    <input type="text" id="name_box" name="query_name">
+  </div>
+
+  <div>
+    <label for="dob_box">
+      Dob
+    </label>
+
+    <input type="date" id="dob_box" name="query_dob">
+  </div>
+
+  <div>
+    <label for="bio_box">
+      Bio
+    </label>
+
+    <textarea id="bio_box" name="query_bio" rows="3"></textarea>
+  </div>
+
+  <div>
+    <label for="image_box">
+      Image
+    </label>
+
+    <input type="text" id="image_box" name="query_image">
+  </div>
+    
+  <button>
+    Create Legend
+  </button>  
+</form>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Dob
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @list_of_players.each do |player| %>
+  <tr>
+    <td>
+      <%= player.id %>
+    </td>
+
+    <td>
+      <img src="<%= player.image %>" style="width:250px;">
+    </td>
+
+    <td>
+      <%= player.name %>
+    </td>
+
+    <td>
+      <%= player.dob %>
+    </td>
+
+    <td>
+      <a href="/players/<%= player.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

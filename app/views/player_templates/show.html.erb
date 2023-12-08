@@ -1,0 +1,129 @@
+<h1>
+  <%= @the_player.name %> Bio
+</h1>
+
+<div>
+  <a href="/players">
+    Go back
+  </a>
+</div>
+
+<div>
+  <a href="/delete_player/<%= @the_player.id %>">
+    Delete player
+  </a>
+</div>
+
+<hr>
+
+<form action="/modify_player/<%= @the_player.id %>" method="post">
+  <div>
+    <label for="name_box">
+      Name
+    </label>
+
+    <input type="text" id="name_box" name="query_name" value="<%= @the_player.name %>">
+  </div>
+
+  <div>
+    <label for="dob_box">
+      Dob
+    </label>
+
+    <input type="date" id="dob_box" name="query_dob" value="<%= @the_player.dob %>">
+  </div>
+
+  <div>
+    <label for="bio_box">
+      Bio
+    </label>
+
+    <textarea id="bio_box" name="query_bio" rows="3"><%= @the_player.bio %></textarea>
+  </div>
+
+  <div>
+    <label for="image_box">
+      Image
+    </label>
+
+    <input type="text" id="image_box" name="query_image" value="<%= @the_player.image %>">
+  </div>
+
+  <button>
+    Update player
+  </button>
+</form>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @the_player.name %>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%= @the_player.dob %>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%= @the_player.bio %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="<%= @the_player.image %>" style="width:250px;">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@the_player.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@the_player.updated_at) %> ago
+  </dd>
+</dl>
+
+<hr>
+
+<h2>career</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Coach
+    </th>
+
+    <th>
+      Season
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+</table>

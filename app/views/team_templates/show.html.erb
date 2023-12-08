@@ -1,0 +1,133 @@
+<h1>
+  Team #<%= @the_team.id %> details
+</h1>
+
+<div>
+  <a href="/teams">
+    Go back
+  </a>
+</div>
+
+<div>
+  <a href="/delete_team/<%= @the_team.id %>">
+    Delete team
+  </a>
+</div>
+
+<hr>
+
+<form action="/modify_team/<%= @the_team.id %>" method="post">
+  <div>
+    <label for="name_box">
+      EPL Team
+    </label>
+
+    <input type="text" id="name_box" name="query_name" value="<%= @the_team.name %>">
+  </div>
+
+  <div>
+    <label for="titles_box">
+      EPL Titles
+    </label>
+
+    <input type="text" id="titles_box" name="query_titles" value="<%= @the_team.titles %>">
+  </div>
+
+  <div>
+    <label for="last_title_box">
+      Last EPL Title
+    </label>
+
+    <input type="text" id="last_title_box" name="query_last_title" value="<%= @the_team.last_title %>">
+  </div>
+
+  <div>
+    <label for="history_box">
+      History
+    </label>
+
+    <textarea id="history_box" name="query_history" rows="3"><%= @the_team.history %></textarea>
+  </div>
+
+  <div>
+    <label for="image_box">
+      Shield
+    </label>
+
+    <input type="text" id="image_box" name="query_image" value="<%= @the_team.image %>">
+  </div>
+
+  <div>
+    <label for="coach_id_box">
+      Coach ID
+    </label>
+
+    <input type="text" id="coach_id_box" name="query_coach_id" value="<%= @the_team.coach_id %>">
+  </div>
+
+  <button>
+    Update team
+  </button>
+</form>
+
+<hr>
+
+<dl>
+  <dt>
+    EPL Club
+  </dt>
+  <dd>
+    <%= @the_team.name %>
+  </dd>
+
+  <dt>
+    Titles
+  </dt>
+  <dd>
+    <%= @the_team.titles %>
+  </dd>
+
+  <dt>
+    Last EPL Title
+  </dt>
+  <dd>
+    <%= @the_team.last_title %>
+  </dd>
+
+  <dt>
+    History
+  </dt>
+  <dd>
+    <%= @the_team.history %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="<%= @the_team.image %>" style="width:250px;">
+  </dd>
+
+  <dt>
+    Coach
+  </dt>
+  <dd>
+    <%= @the_team.coach_id.name %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@the_team.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@the_team.updated_at) %> ago
+  </dd>
+</dl>
+
+<hr>

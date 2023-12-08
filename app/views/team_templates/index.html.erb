@@ -1,0 +1,152 @@
+<div>
+  <a href="/">
+    Go home
+  </a>
+</div>
+
+<h1>
+  List of EPL teams
+</h1>
+
+<hr>
+
+<form action="/insert_team" method="post">
+  <div>
+    <label for="name_box">
+      EPL Team
+    </label>
+
+    <input type="text" id="name_box" name="query_name">
+  </div>
+
+  <div>
+    <label for="titles_box">
+      EPL Palmares
+    </label>
+
+    <input type="text" id="titles_box" name="query_titles">
+  </div>
+
+  <div>
+    <label for="last_title_box">
+      Last title
+    </label>
+
+    <input type="text" id="last_title_box" name="query_last_title">
+  </div>
+
+  <div>
+    <label for="history_box">
+      History
+    </label>
+
+    <textarea id="history_box" name="query_history" rows="3"></textarea>
+  </div>
+
+  <div>
+    <label for="image_box">
+      Shield
+    </label>
+
+    <input type="text" id="image_box" name="query_image">
+  </div>
+
+  <div>
+    <label for="coach_id_box">
+      Coach ID
+    </label>
+
+    <input type="text" id="coach_id_box" name="query_coach_id">
+  </div>
+  <hr>
+  <span class="fancy-button base-button">Create team!</span>
+</form>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Titles
+    </th>
+
+    <th>
+      Last title
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @list_of_teams.each do |a_team| %>
+  <tr>
+    <td>
+      <%= a_team.id %>
+    </td>
+
+    <td>
+      <img src="<%= a_team.image %>" style="width:250px;">
+    </td>
+
+    <td>
+      <%= a_team.name %>
+    </td>
+
+    <td>
+      <%= a_team.titles %>
+    </td>
+
+    <td>
+      <%= a_team.last_title %>
+    </td>
+
+    <td>
+      <a href="/teams/<%= a_team.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<style>
+  /* Write your CSS here to make the span look like a button. */
+  .base-button {
+    color: white;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .fancy-button {
+  background-color: blue;
+  }
+
+  .fancy-button:hover {
+    background-color: red;
+  }
+
+  .fancy-button:active {
+    background-color: black;
+  }
+
+  .danger-button {
+  background-color: red;
+    
+  }
+
+</style>

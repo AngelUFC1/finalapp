@@ -1,0 +1,9 @@
+<div>
+  <a href="/">
+    Go home
+  </a>
+</div>
+
+<h1>Eldest coach</h1>
+
+<p>The eldest coach in our records right now is <a href="/coaches/<%= @eldest.id %>"><%= @eldest.name %></a>, born on <%= @eldest.dob.strftime("%B %e, %Y") %>.</p>
